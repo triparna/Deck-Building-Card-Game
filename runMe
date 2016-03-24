@@ -1,0 +1,10 @@
+#!/bin/bash
+# script to be executed to run tests on the improved version of the Deck Building Card game.
+
+clear
+echo "Hello! Let's start with running the unit tests first for the deck building card game"
+python dbcTest.py
+echo "==============================================="
+echo "Running the actual game for you to play. Enjoy!"
+echo "==============================================="
+python dbc.py
