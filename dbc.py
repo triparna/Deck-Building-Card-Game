@@ -116,7 +116,7 @@ class Player:
         that were bought are shuffled and placed in the deck.
         """
 
-	for x in range(0, playerHandsize):
+	for counter in range(0, playerHandsize):
             if (len(self.deck) == 0):
                 random.shuffle(self.discard)
                 self.deck = self.discard
@@ -300,7 +300,7 @@ def playAllCards(player):
     """
 
     if(len(player.getHand()) > 0):
-        for x in range(0, len(player.getHand())):
+        for counter in range(0, len(player.getHand())):
             card = player.getHand().pop()
             setActiveForPlayer(player, card)
 
@@ -363,10 +363,10 @@ def setDiscardAtEOT(player):
     and active area and appends them to the player's discard pile.
     """
     if len(player.getHand()) > 0:
-        for x in range (0, len(player.getHand())):
+        for counter in range (0, len(player.getHand())):
             player.setDiscard(player.getHand().pop())
     if len(player.getActive()) > 0:
-        for x in range (0, len (player.getActive())):
+        for counter in range (0, len (player.getActive())):
             player.setDiscard(player.getActive().pop())
 
 def checkForResult(player, opponent):
@@ -562,31 +562,11 @@ if __name__ == '__main__':
                             buyCard = raw_input("Choose option: ")
                             if buyCard == 'S':
                                 buyCardForPlayer(playerOne, 0, central['supplement'], 'supplement', None)
-                                """if len(central['supplement']) > 0:
-                                    if playerOne.getMoney() >= central['supplement'][0].cost:
-                                        playerOne.setMoney(playerOne.getMoney() - central['supplement'][0].cost)
-                                        playerOne.setDiscard(central['supplement'].pop())
-                                        print "Supplement Bought"
-             		            else:
-				        print "Insufficient money to buy"
-		                else:
-                                    print "No supplements left"""
 		            elif buyCard == 'E':
               		        break;
 		            elif buyCard.isdigit():
 	    	                if int(buyCard) < len(central['active']):
                                     buyCardForPlayer(playerOne, buyCard, central['active'], 'central', central)
-                                    """if playerOne.getMoney() >= central['active'][int(buyCard)].cost:
-                                        playerOne.setMoney(playerOne.getMoney() - central['active'][int(buyCard)].cost)
-                               	        playerOne.setDiscard(central['active'].pop(int(buyCard)))
-                                        if (len(central['deck']) > 0):
-                                            card = central['deck'].pop()
-                                            central['active'].append(card)
-                                        else:
-                                            central['activeSize'] = central['activeSize'] - 1
-                                        print "Card bought"
-                                    else:
-                                        print "insufficient money to buy"""
                                 else:
                                     print "enter a valid index number"
                             else:
